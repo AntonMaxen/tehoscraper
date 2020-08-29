@@ -7,7 +7,7 @@ def is_new_source(source, filename):
     if os.path.isfile(f'./{filename}'):
         src_file = open(filename, 'r', encoding='utf-8')
         content = src_file.read().splitlines()
-        print(content)
+        # print(content)
         src_file.close()
     else:
         src_file = open(filename, 'w', encoding='utf-8')

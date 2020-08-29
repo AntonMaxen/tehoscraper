@@ -20,11 +20,7 @@ FILENAME = "sources.txt"
 want_reset = False
 
 
-def upload_new_source():
-    pass
-
-
-def main():
+def find_new_sources():
     if want_reset:
         reset_sources(FILENAME)
 
@@ -45,12 +41,15 @@ def main():
     parsed_content = BeautifulSoup(content_result.content, 'html.parser')
     iframes = parsed_content.find_all('iframe')
     sources = ['https:' + src['src'] for src in iframes]
+    new_sources = []
 
     for source in sources:
         if is_new_source(source, FILENAME):
-            print(f'Uploading: {source} to discord')
-    pass
+            new_sources.append(source)
+            print(f'Found a new source: {source} adding it to the queue')
+
+    return new_sources
 
 
 if __name__ == '__main__':
-    main()
+    find_new_sources()

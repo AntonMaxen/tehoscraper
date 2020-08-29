@@ -2,7 +2,7 @@ import os
 from dotenv import load_dotenv
 
 import requests
-from writefile import is_new_source, reset_sources
+from writefile import is_new_source
 from bs4 import BeautifulSoup
 
 
@@ -14,16 +14,10 @@ PASSWORD = os.getenv('PP_PASSWORD')
 LOGIN_URL = "https://yh.pingpong.se/login/processlogin?disco=local"
 URL = "https://yh.pingpong.se/courseId/11264/content.do?id=4744630"
 BASE_URL = "https://yh.pingpong.se"
-FILENAME = "sources.txt"
-
-# Set this to true to test behaviour of empty file
-want_reset = False
 
 
-def find_new_sources():
-    if want_reset:
-        reset_sources(FILENAME)
-
+# Returns array of sources that's new according to sources txt file.
+def find_new_sources(FILENAME):
     session_requests = requests.session()
 
     payload = {

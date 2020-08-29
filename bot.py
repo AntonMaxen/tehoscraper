@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 from timer import is_wanted_hour
 from scraper import find_new_sources
-WANTED_HOUR = 18
+WANTED_HOUR = 2
 TIME_FILE = 'time.txt'
 SOURCE_FILE = 'sources.txt'
 
@@ -76,8 +76,12 @@ if __name__ == '__main__':
             await ctx.send("You dont have permission to do that.")
             return
 
-        os.remove(TIME_FILE)
-        os.remove(SOURCE_FILE)
+        if os.path.isfile(f'./{SOURCE_FILE}'):
+            os.remove(SOURCE_FILE)
+
+        if os.path.isfile(f'./{TIME_FILE}'):
+            os.remove(TIME_FILE)
+
         await ctx.send("have successfully resetted the cache.")
 
 

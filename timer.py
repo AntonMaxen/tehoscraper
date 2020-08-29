@@ -18,7 +18,7 @@ def is_wanted_hour(wanted_hour, FILENAME):
         time_file = open(FILENAME, 'w', encoding='utf-8')
         time_file.write(str(last_hour))
         time_file.close()
-        if last_hour == wanted_hour:
+        if last_hour % wanted_hour == 0:
             print(f'{last_hour}: is a wanted hour')
             bool_wanted_hour = True
     else:

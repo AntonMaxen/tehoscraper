@@ -2,7 +2,5 @@
 venv/
 .env
 __pycache__
-out.html
-output2.html
 sources.txt
 time.txt

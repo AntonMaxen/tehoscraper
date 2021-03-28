@@ -1,5 +1,5 @@
 LOGIN_URL = "https://yh.pingpong.se/login/processlogin?disco=local"
-URL = "https://yh.pingpong.se/courseId/11264/content.do?id=4744630"
+URL = "https://yh.pingpong.se/courseId/12114/content.do?id=5542449"
 BASE_URL = "https://yh.pingpong.se"
 SOURCE_FILE = 'sources.txt'
 TIME_FILE = 'time.txt'

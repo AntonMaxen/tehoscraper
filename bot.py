@@ -52,7 +52,7 @@ def reformat_source(source):
     return reformatted_source
 
 
-def main():
+if __name__ == '__main__':
     discord_bot = commands.Bot(command_prefix='!')
     my_event = MyCog(discord_bot, CHANNEL)
 
@@ -86,7 +86,3 @@ def main():
         print(f'Connected with user: {discord_bot.user.name}')
 
     discord_bot.run(TOKEN)
-
-
-if __name__ == '__main__':
-    main()

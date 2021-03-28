@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import requests
 from writefile import is_new_source
 from bs4 import BeautifulSoup
+from config import LOGIN_URL, URL, BASE_URL
 
 
 load_dotenv()
@@ -11,13 +12,8 @@ USERNAME = os.getenv('PP_USERNAME')
 PASSWORD = os.getenv('PP_PASSWORD')
 
 
-LOGIN_URL = "https://yh.pingpong.se/login/processlogin?disco=local"
-URL = "https://yh.pingpong.se/courseId/11264/content.do?id=4744630"
-BASE_URL = "https://yh.pingpong.se"
-
-
 # Returns array of sources that's new according to sources txt file.
-def find_new_sources(FILENAME):
+def find_new_sources(filename):
     session_requests = requests.session()
 
     payload = {
@@ -38,7 +34,7 @@ def find_new_sources(FILENAME):
     new_sources = []
 
     for source in sources:
-        if is_new_source(source, FILENAME):
+        if is_new_source(source, filename):
             new_sources.append(source)
             print(f'Found a new source: {source} adding it to the queue')
 
@@ -46,4 +42,4 @@ def find_new_sources(FILENAME):
 
 
 if __name__ == '__main__':
-    find_new_sources()
+    pass

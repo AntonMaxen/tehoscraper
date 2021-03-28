@@ -5,9 +5,8 @@ from dotenv import load_dotenv
 
 from timer import is_wanted_hour
 from scraper import find_new_sources
-WANTED_HOUR = 2
-TIME_FILE = 'time.txt'
-SOURCE_FILE = 'sources.txt'
+from config import WANTED_HOUR, TIME_FILE, SOURCE_FILE
+
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
@@ -53,10 +52,9 @@ def reformat_source(source):
     return reformatted_source
 
 
-if __name__ == '__main__':
+def main():
     discord_bot = commands.Bot(command_prefix='!')
     my_event = MyCog(discord_bot, CHANNEL)
-
 
     @discord_bot.command(name='update', help='force bot to look for sources')
     async def update(ctx):
@@ -68,7 +66,6 @@ if __name__ == '__main__':
             await ctx.send("Found new sources.")
         else:
             await ctx.send("Found nothing new.")
-
 
     @discord_bot.command(name='reset', help='resets bot storage')
     async def reset(ctx):
@@ -84,11 +81,12 @@ if __name__ == '__main__':
 
         await ctx.send("have successfully resetted the cache.")
 
-
     @discord_bot.event
     async def on_ready():
         print(f'Connected with user: {discord_bot.user.name}')
 
-
     discord_bot.run(TOKEN)
 
+
+if __name__ == '__main__':
+    main()

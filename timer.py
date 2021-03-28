@@ -2,9 +2,9 @@ import datetime
 from writefile import get_content
 
 
-def is_wanted_hour(wanted_hour, FILENAME):
+def is_wanted_hour(wanted_hour, filename):
     bool_wanted_hour = False
-    hour = get_content(FILENAME)
+    hour = get_content(filename)
     if len(hour) > 0:
         last_hour = int(hour[0])
     else:
@@ -15,7 +15,7 @@ def is_wanted_hour(wanted_hour, FILENAME):
     if hour != last_hour:
         print("This is a new hour")
         last_hour = hour
-        time_file = open(FILENAME, 'w', encoding='utf-8')
+        time_file = open(filename, 'w', encoding='utf-8')
         time_file.write(str(last_hour))
         time_file.close()
         if last_hour % wanted_hour == 0:
@@ -28,4 +28,4 @@ def is_wanted_hour(wanted_hour, FILENAME):
 
 
 if __name__ == '__main__':
-    is_wanted_hour(18)
+    pass
